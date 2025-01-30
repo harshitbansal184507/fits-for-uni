@@ -61,7 +61,7 @@ const ForgotPassword = () => {
 
     return (
         <section className='w-full container mx-auto px-2'>
-            <div className='bg-white my-4 w-full max-w-lg mx-auto rounded p-7'>
+            <div className='bg-white my-4 w-full max-w-lg mx-auto rounded p-7 dark:text-white dark:bg-gray-700'>
                 <p className='font-semibold text-lg'>Forgot Password </p>
                 <form className='grid gap-4 py-4' onSubmit={handleSubmit}>
                     <div className='grid gap-1'>
@@ -69,7 +69,7 @@ const ForgotPassword = () => {
                         <input
                             type='email'
                             id='email'
-                            className='bg-blue-50 p-2 border rounded outline-none focus:border-primary-200'
+                            className='dark:text-white dark:bg-gray-700 bg-blue-50 p-2 border rounded outline-none focus:border-primary-200'
                             name='email'
                             value={data.email}
                             onChange={handleChange}

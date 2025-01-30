@@ -147,7 +147,7 @@ const UploadProduct = () => {
   // },[])
   return (
     <section className=''>
-        <div className='p-2   bg-white shadow-md flex items-center justify-between'>
+        <div className='p-2   bg-white shadow-md flex items-center justify-between dark:text-white dark:bg-gray-700'>
             <h2 className='font-semibold'>Upload Product</h2>
         </div>
         <div className='grid p-3'>
@@ -162,7 +162,7 @@ const UploadProduct = () => {
                     value={data.name}
                     onChange={handleChange}
                     required
-                    className='bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded'
+                    className='bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:text-white dark:bg-gray-700'
                   />
                 </div>
                 <div className='grid gap-1'>
@@ -177,13 +177,13 @@ const UploadProduct = () => {
                     required
                     multiple 
                     rows={3}
-                    className='bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded resize-none'
+                    className='bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded resize-none dark:text-white dark:bg-gray-700'
                   />
                 </div>
                 <div>
                     <p className='font-medium'>Image</p>
                     <div>
-                      <label htmlFor='productImage' className='bg-blue-50 h-24 border rounded flex justify-center items-center cursor-pointer'>
+                      <label htmlFor='productImage' className='bg-blue-50 h-24 border rounded flex justify-center items-center cursor-pointer dark:text-white dark:bg-gray-700'>
                           <div className='text-center flex justify-center items-center flex-col'>
                             {
                               imageLoading ?  <Loading/> : (
@@ -207,14 +207,14 @@ const UploadProduct = () => {
                         {
                           data.image.map((img,index) =>{
                               return(
-                                <div key={img+index} className='h-20 mt-1 w-20 min-w-20 bg-blue-50 border relative group'>
+                                <div key={img+index} className='h-20 mt-1 w-20 min-w-20 bg-blue-50 border relative group dark:text-white dark:bg-gray-700'>
                                   <img
                                     src={img}
                                     alt={img}
                                     className='w-full h-full object-scale-down cursor-pointer' 
                                     onClick={()=>setViewImageURL(img)}
                                   />
-                                  <div onClick={()=>handleDeleteImage(index)} className='absolute bottom-0 right-0 p-1 bg-red-600 hover:bg-red-600 rounded text-white hidden group-hover:block cursor-pointer'>
+                                  <div onClick={()=>handleDeleteImage(index)} className='absolute bottom-0 right-0 p-1 bg-red-600 hover:bg-red-600 rounded text-white hidden group-hover:block cursor-pointer dark:text-white dark:bg-gray-700'>
                                     <MdDelete/>
                                   </div>
                                 </div>
@@ -229,7 +229,7 @@ const UploadProduct = () => {
                   <label className='font-medium'>Department</label>
                   <div>
                     <select
-                      className='bg-blue-50 border w-full p-2 rounded'
+                      className='bg-blue-50 border w-full p-2 rounded dark:text-white dark:bg-gray-700'
                       value={selectCategory}
                       onChange={(e)=>{
                         const value = e.target.value 

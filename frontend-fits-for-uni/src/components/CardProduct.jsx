@@ -11,7 +11,7 @@ const CardProduct = ({data}) => {
     return (
         <Link 
             to={url} 
-            className='group relative border-2 border-gray-100 hover:border-red-100 transition-all duration-300 p-4 grid gap-3 min-w-36 lg:min-w-52 rounded-xl shadow-sm hover:shadow-lg bg-white overflow-hidden'
+            className=' dark:text-white group relative border-2 border-gray-100 hover:border-red-100 transition-all duration-300 p-4 grid gap-3 min-w-36 lg:min-w-52 rounded-xl shadow-sm hover:shadow-lg bg-white overflow-hidden dark:bg-gray-900'
         >
             
             {/* Product Image */}
@@ -26,7 +26,7 @@ const CardProduct = ({data}) => {
             <div className='space-y-2'>
             <div className='space-y-2'>
     <div className='relative'>
-        <h3 className='font-bold text-sm lg:text-base line-clamp-2 text-gray-900 
+        <h3 className='font-bold text-sm lg:text-base line-clamp-2 text-gray-900 dark:bg-gray-700 dark:text-white
             before:absolute before:-left-2 before:inset-y-0 before:w-[3px] before:bg-red-500 
             before:opacity-0 group-hover:before:opacity-100 
             pl-3 transition-all duration-300 

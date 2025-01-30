@@ -12,6 +12,8 @@ import UserMenu from "./UserMenu";
 import { DisplayPriceInRupees } from "../utils/DisplayPriceInRupees";
 import { useGlobalContext } from "../provider/GlobalProvider";
 import DisplayCartItem from "./DisplayCartItem";
+import ThemeToggle from "./ThemeToggle";
+
 
 const Header = () => {
   const [isMobile] = useMobile();
@@ -41,8 +43,8 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 shadow-lg before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.8),transparent)] before:z-0">
-      <div className="h-28 lg:h-32 flex flex-col justify-center relative">
+    <header className="sticky top-0 z-40 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 shadow-lg before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.8),transparent)] before:z-0 ">
+      <div className="h-28 lg:h-32 flex flex-col justify-center relative dark:bg-gray-700">
         {!(isSearchPage && isMobile) && (
           <div className="container mx-auto flex items-center px-6 justify-between relative z-10">
             {/* Logo and name */}
@@ -70,25 +72,28 @@ const Header = () => {
               >
                 <FaRegCircleUser size={28} />
               </button>
+              <ThemeToggle />
+
+              
 
               {/* Desktop */}
-              <div className="hidden lg:flex items-center gap-6">
+              <div className="hidden lg:flex items-center gap-6 ">
                 {user?._id ? (
-                  <div className="relative">
+                  <div className="relative ">
                     <div
                       onClick={() => setOpenUserMenu((prev) => !prev)}
-                      className="flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg hover:bg-white/50 transition-all duration-300"
+                      className="flex items-center gap-2 cursor-pointer px-4 py-2.5 rounded-lg hover:bg-white/50 transition-all duration-300 dark:bg-red-900"
                     >
-                      <p className="text-gray-800 font-medium">Account</p>
+                      <p className="text-gray-800 font-medium dark:text-white ">Account</p>
                       {openUserMenu ? (
-                        <GoTriangleUp size={20} className="text-gray-600" />
+                        <GoTriangleUp size={20} className="text-gray-600 dark:bg-white" />
                       ) : (
-                        <GoTriangleDown size={20} className="text-gray-600" />
+                        <GoTriangleDown size={20} className="text-gray-600 dark:bg-white" />
                       )}
                     </div>
                     {openUserMenu && (
                       <div className="absolute right-0 top-12">
-                        <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-4 min-w-56 border border-gray-100">
+                        <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl p-4 min-w-56 border border-gray-100  dark:bg-gray-700 dark:text-white">
                           <UserMenu close={handleCloseUserMenu} />
                         </div>
                       </div>

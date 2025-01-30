@@ -45,8 +45,8 @@ const UserProfileAvatarEdit = ({close}) => {
     }
   return (
     <section className='fixed top-0 bottom-0 left-0 right-0 bg-neutral-900 bg-opacity-60 p-4 flex items-center justify-center'>
-        <div className='bg-white max-w-sm w-full rounded p-4 flex flex-col items-center justify-center'>
-            <button onClick={close} className='text-neutral-800 w-fit block ml-auto'>
+        <div className=' dark:bg-gray-700 dark:text-white bg-white max-w-sm w-full rounded p-4 flex flex-col items-center justify-center'>
+            <button onClick={close} className='text-neutral-800 w-fit block ml-auto  dark:bg-gray-700 dark:text-white'>
                 <IoClose size={20}/>
             </button>
             <div className='w-20 h-20 bg-red-500 flex items-center justify-center rounded-full overflow-hidden drop-shadow-sm'>
@@ -64,7 +64,7 @@ const UserProfileAvatarEdit = ({close}) => {
             </div>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='uploadProfile'>
-                    <div className='border border-primary-200 cursor-pointer hover:bg-primary-200 px-4 py-1 rounded text-sm my-3'>
+                    <div className='border border-red-700 cursor-pointer hover:bg-white px-4 py-1 rounded text-sm my-3'>
                         {
                             loading ? "Loading..." : "Upload"
                         }

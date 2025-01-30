@@ -276,11 +276,8 @@ export const searchProduct = async(request,response)=>{
             limit  = 10
         }
 
-        const query = search ? {
-            $text : {
-                $search : search
-            }
-        } : {}
+        const query = search ? { name: { $regex: search, $options: "i" } } : {};
+
 
         const skip = ( page - 1) * limit
 

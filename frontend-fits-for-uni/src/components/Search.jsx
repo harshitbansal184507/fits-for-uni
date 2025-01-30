@@ -29,15 +29,15 @@ const Search = () => {
     }
 
     return (
-        <div className='w-full min-w-[300px] lg:min-w-[420px] h-11 lg:h-12 rounded-lg border-2 border-transparent overflow-hidden flex items-center text-white bg-gray-900 group'>
+        <div className='w-full min-w-[300px] lg:min-w-[420px] h-11 lg:h-12 rounded-lg border-2 border-transparent overflow-hidden flex items-center text-white bg-gray-900 group dark:bg-white'>
             <div>
                 {
                     (isMobile && isSearchPage) ? (
-                        <Link to={"/"} className='flex justify-center items-center h-full p-2 m-1 group-focus-within:text-red-500 bg-black rounded-full shadow-md'>
+                        <Link to={"/"} className='flex justify-center items-center h-full p-2 m-1  bg-black rounded-full shadow-md'>
                             <FaArrowLeft size={20} />
                         </Link>
                     ) : (
-                        <button className='flex justify-center items-center h-full p-3 group-focus-within:text-white group-focus-within:bg-red-600 rounded-full'>
+                        <button className='flex justify-center items-center h-full p-3 group-focus-within:text-white  rounded-full'>
                             <IoSearch size={22} />
                         </button>
                     )
@@ -47,7 +47,7 @@ const Search = () => {
                 {
                     !isSearchPage ? (
                         // Not in search page
-                        <div onClick={redirectToSearchPage} className='w-full h-full flex items-center'>
+                        <div onClick={redirectToSearchPage} className='w-full h-full flex items-center dark:text-gray-700'>
                             <TypeAnimation
                                 sequence={[
                                     'Search "T-Shirts"',
@@ -81,7 +81,7 @@ const Search = () => {
                                 placeholder='Search for more.'
                                 autoFocus
                                 defaultValue={searchText}
-                                className='bg-transparent w-full h-full outline-none text-white placeholder-gray-400 border-2 border-transparent focus:border-red-600 focus:ring-2 focus:ring-red-500 transition-all duration-300'
+                                className='bg-transparent w-full h-full outline-none text-white placeholder-gray-400 border-2 border-transparent  transition-all duration-300'
                                 onChange={handleOnChange}
                             />
                         </div>
