@@ -28,8 +28,8 @@ const DisplayCartItem = ({close}) => {
     }
   return (
     <section className='bg-neutral-900 fixed top-0 bottom-0 right-0 left-0 bg-opacity-70 z-50'>
-        <div className='bg-white w-full max-w-sm min-h-screen max-h-screen ml-auto'>
-            <div className='flex items-center p-4 shadow-md gap-3 justify-between'>
+        <div className='bg-white w-full max-w-sm min-h-screen max-h-screen ml-auto dark:bg-gray-700 dark:text-white'>
+            <div className='flex items-center p-4 shadow-md gap-3 justify-between dark:bg-gray-700 dark:text-white'>
                 <h2 className='font-semibold'>Cart</h2>
                 <Link to={"/"} className='lg:hidden'>
                     <IoClose size={25}/>
@@ -39,15 +39,15 @@ const DisplayCartItem = ({close}) => {
                 </button>
             </div>
 
-            <div className='min-h-[75vh] lg:min-h-[80vh] h-full max-h-[calc(100vh-150px)] bg-blue-50 p-2 flex flex-col gap-4'>
+            <div className='dark:bg-gray-700 dark:text-white min-h-[75vh] lg:min-h-[80vh] h-full max-h-[calc(100vh-150px)] bg-blue-50 p-2 flex flex-col gap-4'>
                 {/***display items */}
                 {
                     cartItem[0] ? (
                         <>
-                            <div className='flex items-center justify-between px-4 py-2 bg-blue-100 text-blue-500 rounded-full'>
+                            <div className='flex items-center justify-between px-4 py-2 bg-blue-100 text-blue-500 rounded-full dark:bg-gray-900 dark:text-white'>
                                     
                             </div>
-                            <div className='bg-white rounded-lg p-4 grid gap-5 overflow-auto'>
+                            <div className='bg-white rounded-lg p-4 grid gap-5 overflow-auto dark:bg-gray-700 dark:text-white'>
                                     {
                                         cartItem[0] && (
                                             cartItem.map((item,index)=>{
@@ -72,7 +72,7 @@ const DisplayCartItem = ({close}) => {
                                         )
                                     }
                             </div>
-                            <div className='bg-white p-4'>
+                            <div className='bg-white p-4 dark:bg-gray-700 dark:text-white' >
                                 <h3 className='font-semibold'>Bill details</h3>
                                 
                                 <div className='flex gap-4 justify-between ml-1'>
@@ -84,10 +84,10 @@ const DisplayCartItem = ({close}) => {
                             </div>
                         </>
                     ) : (
-                        <div className='bg-gray-50 flex flex-col justify-center items-center p-6 rounded-lg shadow-md animate-fade-in'>
+                        <div className='bg-gray-50 flex flex-col justify-center items-center p-6 rounded-lg shadow-md animate-fade-in dark:bg-gray-900 dark:text-white'>
     <img
         src={imageEmpty}
-        className='w-full max-w-xs h-auto object-scale-down mb-4 animate-bounce-soft'
+        className='w-full max-w-xs h-auto object-scale-down mb-4 animate-bounce-soft dark:bg-gray-700 dark:text-white'
     />
     <Link 
         onClick={close} 

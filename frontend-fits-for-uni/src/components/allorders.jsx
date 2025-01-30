@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Axios from '../utils/Axios'; // Ensure Axios instance is correctly imported
+import Axios from '../utils/Axios'; 
 import toast from "react-hot-toast";
 
 const AllOrders = () => {
@@ -9,9 +9,9 @@ const AllOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await Axios.get("/api/order/all-orders"); // Correct API endpoint
+        const response = await Axios.get("/api/order/all-orders"); 
         if (response.data.success) {
-          setOrders(response.data.orders); // Set orders from response
+          setOrders(response.data.orders); 
         } else {
           toast.error("No orders found!");
         }
@@ -31,11 +31,11 @@ const AllOrders = () => {
   }
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">All Orders</h2>
+    <div className="p-4 dark:bg-gray-700 dark:text-white">
+      <h2 className="text-2xl font-bold mb-4 dark:bg-gray-700 dark:text-white">All Orders</h2>
       <table className="table-auto w-full border">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="bg-gray-100 dark:bg-gray-700 dark:text-white">
             <th className="px-4 py-2">Order ID</th>
             <th className="px-4 py-2">Username</th>
             <th className="px-4 py-2">Product Name</th>
@@ -44,7 +44,7 @@ const AllOrders = () => {
         <tbody>
           {orders.length === 0 ? (
             <tr>
-              <td colSpan="3" className="px-4 py-2 text-center text-gray-500">No orders available.</td>
+              <td colSpan="3" className="px-4 py-2 text-center text-gray-500 dark:bg-gray-700 dark:text-white">No orders available.</td>
             </tr>
           ) : (
             orders.map((order) => (

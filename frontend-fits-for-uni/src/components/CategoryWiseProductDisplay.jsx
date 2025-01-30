@@ -64,7 +64,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
     const redirectURL = handleRedirectProductListpage()
     
     return (
-        <div className='bg-gray-50 py-4'>
+        <div className='bg-gray-50 py-4 dark:bg-gray-800'>
             <div className='container mx-auto p-4 flex items-center justify-between gap-4'>
                 <h3 className='font-semibold text-lg md:text-xl text-gray-800'>{name}</h3>
                 <Link 
@@ -83,7 +83,7 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
                         loadingCardNumber.map((_, index) => (
                             <CardLoading 
                                 key={"CategorywiseProductDisplay123" + index} 
-                                className='bg-red-50 animate-pulse'
+                                className='bg-red-50 animate-pulse dark:bg-gray-700'
                             />
                         ))
                     }
@@ -92,20 +92,20 @@ const CategoryWiseProductDisplay = ({ id, name }) => {
                         <CardProduct
                             data={p}
                             key={p._id + "CategorywiseProductDisplay" + index}
-                            className='hover:shadow-md transition-shadow'
+                            className='hover:shadow-md transition-shadow '
                         />
                     ))}
                 </div>
                 <div className='w-full left-0 right-0 container mx-auto px-2 absolute hidden lg:flex justify-between'>
                     <button 
                         onClick={handleScrollLeft} 
-                        className='z-10 relative bg-white hover:bg-red-50 shadow-lg text-lg p-2 rounded-full border border-gray-200'
+                        className='dark:bg-gray-700 dark:text-white z-10 relative bg-white hover:bg-red-50 shadow-lg text-lg p-2 rounded-full border border-gray-200 '
                     >
                         <FaAngleLeft className='text-gray-700 hover:text-red-600'/>
                     </button>
                     <button 
                         onClick={handleScrollRight} 
-                        className='z-10 relative bg-white hover:bg-red-50 shadow-lg p-2 text-lg rounded-full border border-gray-200'
+                        className='dark:bg-gray-700 dark:text-white z-10 relative bg-white hover:bg-red-50 shadow-lg p-2 text-lg rounded-full border border-gray-200'
                     >
                         <FaAngleRight className='text-gray-700 hover:text-red-600'/>
                     </button>

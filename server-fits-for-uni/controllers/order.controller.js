@@ -1,4 +1,3 @@
-import Stripe from "../config/stripe.js";
 import CartProductModel from "../models/cartproduct.model.js";
 import OrderModel from "../models/order.model.js";
 import UserModel from "../models/user.model.js";
@@ -6,7 +5,7 @@ import mongoose from "mongoose";
 
  export async function CashOnDeliveryOrderController(request,response){
     try {
-        const userId = request.userId // auth middleware 
+        const userId = request.userId 
         const { list_items, totalAmt, addressId,subTotalAmt } = request.body 
 
         const payload = list_items.map(el => {

@@ -63,17 +63,17 @@ const Login = () => {
     }
 
     return (
-        <section className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200'>
-            <div className='bg-white/80 backdrop-blur-sm w-full max-w-md mx-4 rounded-2xl shadow-xl p-8'>
+        
+        <section className='min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-900'>            <div className='bg-white/80 backdrop-blur-sm w-full max-w-md mx-4 rounded-2xl shadow-xl p-8 dark:bg-gray-700'>
                 {/* Header */}
-                <div className='text-center mb-8'>
-                    <h1 className='text-3xl font-bold text-gray-800 mb-2'>Welcome Back</h1>
-                    <p className='text-gray-600'>Please sign in to continue</p>
+                <div className='text-center mb-8 dark:gray-700 dark:text-white'>
+                    <h1 className='text-3xl font-bold text-gray-800 mb-2 dark:text-white' >Welcome Back</h1>
+                    <p className='text-gray-600 dark:text-white' >Please sign in to continue</p>
                 </div>
 
-                <form className='space-y-6' onSubmit={handleSubmit}>
+                <form className='space-y-6 ' onSubmit={handleSubmit}>
                     <div className='space-y-2'>
-                        <label htmlFor='email' className='text-sm font-medium text-gray-700'>
+                        <label htmlFor='email' className='text-sm font-medium text-gray-700 dark:text-white'>
                             Email Address
                         </label>
                         <input
@@ -89,7 +89,7 @@ const Login = () => {
                     </div>
 
                     <div className='space-y-2'>
-                        <label htmlFor='password' className='text-sm font-medium text-gray-700'>
+                        <label htmlFor='password' className='text-sm font-medium text-gray-700 dark:text-white'>
                             Password
                         </label>
                         <div className='relative group'>
@@ -114,7 +114,7 @@ const Login = () => {
                         </div>
                         <Link 
                             to="/forgot-password"
-                            className='block text-right text-sm text-red-600 hover:text-red-700 transition-colors'
+                            className=' dark:text-white block text-right text-sm text-red-600 hover:text-red-700 transition-colors'
                         >
                             Forgot password?
                         </Link>
@@ -134,11 +134,11 @@ const Login = () => {
                     </button>
                 </form>
 
-                <p className='mt-8 text-center text-gray-600'>
+                <p className='mt-8 text-center text-gray-600 dark:text-white'>
                     Don't have an account?{' '}
                     <Link 
                         to="/register"
-                        className='font-semibold text-red-600 hover:text-red-700 transition-colors'
+                        className='font-semibold text-red-600 hover:text-red-700 transition-colors dark:text-white'
                     >
                         Register
                     </Link>

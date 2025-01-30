@@ -42,11 +42,11 @@ const UserMenu = ({close}) => {
       }
    }
   return (
-    <div>
+    <div className=" dark:bg-gray-700 dark:text-white">
         <div className='font-semibold'>My Account</div>
-        <div className='text-sm flex items-center gap-2'>
-          <span className='max-w-52 text-ellipsis line-clamp-1'>{user.name || user.mobile} <span className='text-medium text-red-600'>{user.role === "ADMIN" ? "(Teacher)" : "" }</span></span>
-          <Link onClick={handleClose} to={"/dashboard/profile"} className='hover:text-primary-200'>
+        <div className='text-sm flex items-center gap-2  dark:bg-gray-700 dark:text-white'>
+          <span className='max-w-52 text-ellipsis line-clamp-1 dark:bg-gray-700 dark:text-white'>{user.name || user.mobile} <span className='text-medium text-red-600'>{user.role === "ADMIN" ? "(Teacher)" : "" }</span></span>
+          <Link onClick={handleClose} to={"/dashboard/profile"} className='hover:text-red-800'>
             <HiOutlineExternalLink size={15}/>
           </Link>
         </div>
@@ -56,38 +56,38 @@ const UserMenu = ({close}) => {
         <div className='text-sm grid gap-1'>
             {
               isAdmin(user.role) && (
-                <Link onClick={handleClose} to={"/dashboard/category"} className='px-2 hover:bg-orange-200 py-1'>Department</Link>
+                <Link onClick={handleClose} to={"/dashboard/category"} className='px-2 hover:bg-red-700 py-1'>Department</Link>
               )
             }
 
             {
               isAdmin(user.role) && (
-                <Link onClick={handleClose} to={"/dashboard/subcategory"} className='px-2 hover:bg-orange-200 py-1'>Sizes</Link>
+                <Link onClick={handleClose} to={"/dashboard/subcategory"} className='px-2 hover:bg-red-700 py-1'>Sizes</Link>
               )
             }
 
             {
               isAdmin(user.role) && (
-                <Link onClick={handleClose} to={"/dashboard/upload-product"} className='px-2 hover:bg-orange-200 py-1'>Upload Product</Link>
+                <Link onClick={handleClose} to={"/dashboard/upload-product"} className='px-2 hover:bg-red-700 py-1'>Upload Product</Link>
               )
             }
 
             {
               isAdmin(user.role) && (
-                <Link onClick={handleClose} to={"/dashboard/product"} className='px-2 hover:bg-orange-200 py-1'>Product</Link>
+                <Link onClick={handleClose} to={"/dashboard/product"} className='px-2 hover:bg-red-700 py-1'>Product</Link>
               )
             }
             {isAdmin(user.role) && ( 
-  <Link onClick={handleClose} to={"/dashboard/all-orders"} className='px-2 hover:bg-orange-200 py-1'>
+  <Link onClick={handleClose} to={"/dashboard/all-orders"} className='px-2 hover:bg-red-700 py-1'>
     View All Orders
   </Link>
 )}
 
-            <Link onClick={handleClose} to={"/dashboard/myorders"} className='px-2 hover:bg-orange-200 py-1'>My Orders</Link>
+            <Link onClick={handleClose} to={"/dashboard/myorders"} className='px-2 hover:bg-red-700 py-1'>My Orders</Link>
 
-            <Link onClick={handleClose} to={"/dashboard/address"} className='px-2 hover:bg-orange-200 py-1'>Save Address</Link>
+            <Link onClick={handleClose} to={"/dashboard/address"} className='px-2 hover:bg-red-700 py-1'>Save Address</Link>
 
-            <button onClick={handleLogout} className='text-left px-2 hover:bg-orange-200 py-1'>Log Out</button>
+            <button onClick={handleLogout} className='text-left px-2 hover:bg-red-700 py-1'>Log Out</button>
 
         </div>
     </div>

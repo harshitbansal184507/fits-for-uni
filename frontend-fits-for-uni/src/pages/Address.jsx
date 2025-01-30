@@ -37,17 +37,17 @@ const Address = () => {
   }
   return (
     <div className=''>
-        <div className='bg-white shadow-lg px-2 py-2 flex justify-between gap-4 items-center '>
+        <div className='bg-white shadow-lg px-2 py-2 flex justify-between gap-4 items-center dark:text-white dark:bg-gray-700'>
             <h2 className='font-semibold text-ellipsis line-clamp-1'>Address</h2>
-            <button onClick={()=>setOpenAddress(true)} className='border border-primary-200 text-primary-200 px-3 hover:bg-primary-200 hover:text-black py-1 rounded-full'>
+            <button onClick={()=>setOpenAddress(true)} className='dark:text-white dark:bg-gray-700 border border-primary-200 text-primary-200 px-3 hover:bg-primary-200 hover:text-black py-1 rounded-full'>
                 Add Address
             </button>
         </div>
-        <div className='bg-blue-50 p-2 grid gap-4'>
+        <div className='bg-blue-50 p-2 grid gap-4 dark:text-white dark:bg-gray-700'>
               {
                 addressList.map((address,index)=>{
                   return(
-                      <div className={`border rounded p-3 flex gap-3 bg-white ${!address.status && 'hidden'}`}>
+                      <div className={` dark:text-white dark:bg-gray-700 border rounded p-3 flex gap-3 bg-white ${!address.status && 'hidden'}`}>
                           <div className='w-full'>
                             <p>{address.address_line}</p>
                             <p>{address.city}</p>
