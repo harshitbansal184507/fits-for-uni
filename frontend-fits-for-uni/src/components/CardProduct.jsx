@@ -62,9 +62,9 @@ const CardProduct = ({ data }) => {
             )}
 
             {/* Add to Cart Button (Not Clickable for Navigation) */}
-            <div>
+            <div className='bg-center'>
                 {data.stock == 0 ? (
-                    <p className='text-red-500 text-sm'>Out of stock</p>
+                    <p className='text-red-500 text-sm bg-center'>Out of stock</p>
                 ) : (
                     <AddToCartButton data={data} selectedSize={selectedSize} />
                 )}

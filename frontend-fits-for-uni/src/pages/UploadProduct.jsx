@@ -267,7 +267,7 @@ const UploadProduct = () => {
                 {data.category.map((c, index) => (
                   <div
                     key={c._id + index + 'productsection'}
-                    className="text-sm flex items-center gap-1 bg-blue-50 mt-2"
+                    className="text-sm flex items-center gap-1 bg-blue-50 mt-2 dark:text-white dark:bg-gray-700"
                   >
                     <p>{c.name}</p>
                     <div
@@ -282,50 +282,7 @@ const UploadProduct = () => {
             </div>
           </div>
 
-          {/* SubCategory Field */}
-          <div className="grid gap-1">
-            <label className="font-medium">Size</label>
-            <div>
-              <select
-                className="bg-blue-50 border w-full p-2 rounded"
-                value={selectSubCategory}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  const subCategory = allSubCategory.find((el) => el._id === value);
-                  setData((preve) => ({
-                    ...preve,
-                    subCategory: [...preve.subCategory, subCategory],
-                  }));
-                  setSelectSubCategory('');
-                }}
-              >
-                <option value="" className="text-neutral-600">
-                  Select Size
-                </option>
-                {allSubCategory.map((c, index) => (
-                  <option key={c._id} value={c._id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
-              <div className="flex flex-wrap gap-3">
-                {data.subCategory.map((c, index) => (
-                  <div
-                    key={c._id + index + 'productsection'}
-                    className="text-sm flex items-center gap-1 bg-blue-50 mt-2"
-                  >
-                    <p>{c.name}</p>
-                    <div
-                      className="hover:text-red-500 cursor-pointer"
-                      onClick={() => handleRemoveSubCategory(index)}
-                    >
-                      <IoClose size={20} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+        
 
           {/* Sizes Field */}
           <div className="grid gap-1">
@@ -333,7 +290,7 @@ const UploadProduct = () => {
             <button
               type="button"
               onClick={handleAddSize}
-              className="bg-primary-100 hover:bg-primary-200 py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
+              className="bg-red-700 hover:bg-red-900 py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
             >
               Add Size
             </button>
@@ -346,7 +303,7 @@ const UploadProduct = () => {
                     placeholder="Enter size (e.g., S, M, L)"
                     value={size.size}
                     onChange={(e) => handleSizeChange(index, 'size', e.target.value)}
-                    className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                    className="bg-blue-50 p-2 outline-none border focus-within:border-red-700 rounded dark:text-white dark:bg-gray-700"
                   />
                 </div>
                 <div className="grid gap-1">
@@ -356,7 +313,7 @@ const UploadProduct = () => {
                     placeholder="Enter stock"
                     value={size.stock}
                     onChange={(e) => handleSizeChange(index, 'stock', e.target.value)}
-                    className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                    className="bg-blue-50 p-2 outline-none border focus-within:border-red-700 rounded dark:text-white dark:bg-gray-700"
                   />
                 </div>
                 <div className="grid gap-1">
@@ -366,13 +323,13 @@ const UploadProduct = () => {
                     placeholder="Enter unit (e.g., pcs)"
                     value={size.unit}
                     onChange={(e) => handleSizeChange(index, 'unit', e.target.value)}
-                    className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                    className="bg-blue-50 p-2 outline-none border focus-within:border-red-700 rounded dark:text-white dark:bg-gray-700"
                   />
                 </div>
                 <button
                   type="button"
                   onClick={() => handleRemoveSize(index)}
-                  className="bg-red-100 hover:bg-red-200 py-1 px-3 w-32 text-center font-semibold border border-red-200 hover:text-neutral-900 cursor-pointer rounded"
+                  className="bg-red-700 hover:bg-red-900 py-1 px-3 w-32 text-center font-semibold border border-red-700 hover:text-neutral-900 cursor-pointer rounded"
                 >
                   Remove Size
                 </button>
@@ -401,7 +358,7 @@ const UploadProduct = () => {
                   }));
                 }}
                 required
-                className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:text-white dark:bg-gray-700"
               />
             </div>
           ))}
@@ -409,13 +366,13 @@ const UploadProduct = () => {
           {/* Add More Fields Button */}
           <div
             onClick={() => setOpenAddField(true)}
-            className="hover:bg-primary-200 bg-white py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
+            className="dark:text-white dark:bg-gray-700 hover:bg-red-700 bg-white py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
           >
             Add Fields
           </div>
 
           {/* Submit Button */}
-          <button className="bg-primary-100 hover:bg-primary-200 py-2 rounded font-semibold">
+          <button className="bg-red-700 hover:bg-red-900 py-2 rounded font-semibold">
             Submit
           </button>
         </form>

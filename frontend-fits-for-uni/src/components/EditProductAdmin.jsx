@@ -152,9 +152,9 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
 
   return (
     <section className="fixed top-0 right-0 left-0 bottom-0 bg-black z-50 bg-opacity-70 p-4">
-      <div className="bg-white w-full p-4 max-w-2xl mx-auto rounded overflow-y-auto h-full max-h-[95vh]">
+      <div className="dark:bg-gray-700 dark:text-white bg-white w-full p-4 max-w-2xl mx-auto rounded overflow-y-auto h-full max-h-[95vh]">
         <section className="">
-          <div className="p-2 bg-white shadow-md flex items-center justify-between">
+          <div className="p-2 dark:bg-gray-700 dark:text-white bg-white shadow-md flex items-center justify-between">
             <h2 className="font-semibold">Edit Product</h2>
             <button onClick={close}>
               <IoClose size={20} />
@@ -175,7 +175,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                   value={data.name}
                   onChange={handleChange}
                   required
-                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                  className="dark:bg-gray-700 dark:text-white bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
                 />
               </div>
 
@@ -194,7 +194,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                   required
                   multiple
                   rows={3}
-                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded resize-none"
+                  className="dark:bg-gray-700 dark:text-white bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded resize-none"
                 />
               </div>
 
@@ -204,7 +204,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                 <div>
                   <label
                     htmlFor="productImage"
-                    className="bg-blue-50 h-24 border rounded flex justify-center items-center cursor-pointer"
+                    className="dark:bg-gray-700 dark:text-white bg-blue-50 h-24 border rounded flex justify-center items-center cursor-pointer"
                   >
                     <div className="text-center flex justify-center items-center flex-col">
                       {imageLoading ? (
@@ -229,7 +229,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                     {data.image.map((img, index) => (
                       <div
                         key={img + index}
-                        className="h-20 mt-1 w-20 min-w-20 bg-blue-50 border relative group"
+                        className="h-20 mt-1 w-20 min-w-20 bg-blue-50 border relative group dark:bg-gray-700 dark:text-white"
                       >
                         <img
                           src={img}
@@ -254,7 +254,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                 <label className="font-medium">Department</label>
                 <div>
                   <select
-                    className="bg-blue-50 border w-full p-2 rounded"
+                    className="bg-blue-50 border w-full p-2 rounded dark:bg-gray-700 dark:text-white"
                     value={selectCategory}
                     onChange={(e) => {
                       const value = e.target.value;
@@ -277,7 +277,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                     {data.category.map((c, index) => (
                       <div
                         key={c._id + index + 'productsection'}
-                        className="text-sm flex items-center gap-1 bg-blue-50 mt-2"
+                        className="text-sm flex items-center gap-1 bg-blue-50 mt-2 dark:bg-gray-700 dark:text-white"
                       >
                         <p>{c.name}</p>
                         <div
@@ -300,7 +300,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                 <button
                   type="button"
                   onClick={handleAddSize}
-                  className="bg-primary-100 hover:bg-primary-200 py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
+                  className="bg-red-700 hover:bg-red-900 py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
                 >
                   Add Size
                 </button>
@@ -313,7 +313,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                         placeholder="Enter size (e.g., S, M, L)"
                         value={size.size}
                         onChange={(e) => handleSizeChange(index, 'size', e.target.value)}
-                        className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                        className="bg-blue-50 p-2 outline-none border focus-within:border-red-700 rounded dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     <div className="grid gap-1">
@@ -323,7 +323,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                         placeholder="Enter stock"
                         value={size.stock}
                         onChange={(e) => handleSizeChange(index, 'stock', e.target.value)}
-                        className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                        className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     <div className="grid gap-1">
@@ -333,13 +333,13 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                         placeholder="Enter unit (e.g., pcs)"
                         value={size.unit}
                         onChange={(e) => handleSizeChange(index, 'unit', e.target.value)}
-                        className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                        className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:bg-gray-700 dark:text-white"
                       />
                     </div>
                     <button
                       type="button"
                       onClick={() => handleRemoveSize(index)}
-                      className="bg-red-100 hover:bg-red-200 py-1 px-3 w-32 text-center font-semibold border border-red-200 hover:text-neutral-900 cursor-pointer rounded"
+                      className="bg-red-700 hover:bg-red-900 py-1 px-3 w-32 text-center font-semibold border border-red-200 hover:text-neutral-900 cursor-pointer rounded"
                     >
                       Remove Size
                     </button>
@@ -360,7 +360,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                   value={data.price}
                   onChange={handleChange}
                   required
-                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:bg-gray-700 dark:text-white"
                 />
               </div>
 
@@ -377,7 +377,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                   value={data.discount}
                   onChange={handleChange}
                   required
-                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                  className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:bg-gray-700 dark:text-white"
                 />
               </div>
 
@@ -402,7 +402,7 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
                       }));
                     }}
                     required
-                    className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded"
+                    className="bg-blue-50 p-2 outline-none border focus-within:border-primary-200 rounded dark:bg-gray-700 dark:text-white"
                   />
                 </div>
               ))}
@@ -410,13 +410,13 @@ const EditProductAdmin = ({ close, data: propsData, fetchProductData }) => {
               {/* Add More Fields Button */}
               <div
                 onClick={() => setOpenAddField(true)}
-                className="hover:bg-primary-200 bg-white py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded"
+                className="hover:bg-primary-200 bg-white py-1 px-3 w-32 text-center font-semibold border border-primary-200 hover:text-neutral-900 cursor-pointer rounded dark:bg-gray-700 dark:text-white"
               >
                 Add Fields
               </div>
 
               {/* Submit Button */}
-              <button className="bg-primary-100 hover:bg-primary-200 py-2 rounded font-semibold">
+              <button className="bg-red-700 hover:bg-red-900 py-2 rounded font-semibold">
                 Update Product
               </button>
             </form>

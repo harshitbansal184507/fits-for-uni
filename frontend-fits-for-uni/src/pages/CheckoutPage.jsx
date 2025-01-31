@@ -86,33 +86,7 @@ const CheckoutPage = () => {
     <section className='bg-blue-50 dark:text-white dark:bg-gray-900'>
       <div className=' dark:bg-gray-900 dark:text-white container mx-auto p-4 flex flex-col lg:flex-row w-full gap-5 justify-between'>
         <div className='w-full dark:bg-gray-700 dark:text-white'>
-          {/***address***/}
-          <h3 className='text-lg font-semibold'>Choose your address</h3>
-          <div className='bg-white p-2 grid gap-4 dark:text-white dark:bg-gray-800 '>
-            {
-              addressList.map((address, index) => {
-                return (
-                  <label htmlFor={"address" + index} className={!address.status && "hidden"}>
-                    <div className='border rounded p-3 flex gap-3 hover:bg-blue-50  dark:bg-gray-700 dark:text-white'>
-                      <div>
-                        <input id={"address" + index} type='radio' value={index} onChange={(e) => setSelectAddress(e.target.value)} name='address' />
-                      </div>
-                      <div>
-                        <p>{address.address_line}</p>
-                        <p>{address.city}</p>
-                        <p>{address.state}</p>
-                        <p>{address.country} - {address.pincode}</p>
-                        <p>{address.mobile}</p>
-                      </div>
-                    </div>
-                  </label>
-                )
-              })
-            }
-            <div onClick={() => setOpenAddress(true)} className='h-16  dark:bg-gray-700 dark:text-white bg-blue-50 border-2 border-dashed flex justify-center items-center cursor-pointer'>
-              Add address
-            </div>
-          </div>
+          This Place is Kept for Payment Gateway (if required since extra uniform items can be requested(so online payment gateway like razorpay etc. .))
 
 
 

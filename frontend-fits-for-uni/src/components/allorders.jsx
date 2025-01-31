@@ -41,6 +41,8 @@ const AllOrders = () => {
             <th className="px-4 py-2">Class</th>
             <th className="px-4 py-2">Roll No.</th>
             <th className="px-4 py-2">Product Name</th>
+            <th className="px-4 py-2">Size</th>
+
           </tr>
         </thead>
         <tbody>
@@ -58,6 +60,8 @@ const AllOrders = () => {
                 <td className="px-4 py-2">{order.studentClass || "N/A"}</td> {/* Updated to studentClass */}
                 <td className="px-4 py-2">{order.rollNo || "N/A"}</td> {/* Updated to rollNo */}
                 <td className="px-4 py-2">{order.productName || "Unknown Product"}</td>
+                <td className="px-4 py-2">{order.size || "FreeSize"}</td>
+
               </tr>
             ))
           )}

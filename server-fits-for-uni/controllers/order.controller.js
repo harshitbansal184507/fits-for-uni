@@ -3,50 +3,49 @@ import OrderModel from "../models/order.model.js";
 import UserModel from "../models/user.model.js";
 import mongoose from "mongoose";
 
- export async function CashOnDeliveryOrderController(request,response){
+export async function CashOnDeliveryOrderController(request, response) {
     try {
-        const userId = request.userId 
-        const { list_items, totalAmt, addressId,subTotalAmt } = request.body 
+        const userId = request.userId;
+        const { list_items, totalAmt, addressId, subTotalAmt } = request.body;
 
         const payload = list_items.map(el => {
-            return({
-                userId : userId,
-                orderId : `ORD-${new mongoose.Types.ObjectId()}`,
-                productId : el.productId._id, 
-                product_details : {
-                    name : el.productId.name,
-                    image : el.productId.image
-                } ,
-                paymentId : "",
-                payment_status : "CASH ON DELIVERY",
-                delivery_address : addressId ,
-                subTotalAmt  : subTotalAmt,
-                totalAmt  :  totalAmt,
-            })
-        })
+            return {
+                userId: userId,
+                orderId: `ORD-${new mongoose.Types.ObjectId()}`,
+                productId: el.productId._id,
+                product_details: {
+                    name: el.productId.name,
+                    image: el.productId.image,
+                },
+                size: el.size, // Include the size field
+                paymentId: "",
+                payment_status: "CASH ON DELIVERY",
+                delivery_address: addressId,
+                subTotalAmt: subTotalAmt,
+                totalAmt: totalAmt,
+            };
+        });
 
-        const generatedOrder = await OrderModel.insertMany(payload)
+        const generatedOrder = await OrderModel.insertMany(payload);
 
-        ///remove from the cart
-        const removeCartItems = await CartProductModel.deleteMany({ userId : userId })
-        const updateInUser = await UserModel.updateOne({ _id : userId }, { shopping_cart : []})
+        // Remove from the cart
+        const removeCartItems = await CartProductModel.deleteMany({ userId: userId });
+        const updateInUser = await UserModel.updateOne({ _id: userId }, { shopping_cart: [] });
 
         return response.json({
-            message : "Order successfully",
-            error : false,
-            success : true,
-            data : generatedOrder
-        })
-
+            message: "Order successfully",
+            error: false,
+            success: true,
+            data: generatedOrder,
+        });
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error ,
-            error : true,
-            success : false
-        })
+            message: error.message || error,
+            error: true,
+            success: false,
+        });
     }
 }
-
 export const pricewithDiscount = (price,dis = 1)=>{
     const discountAmout = Math.ceil((Number(price) * Number(dis)) / 100)
     const actualPrice = Number(price) - Number(discountAmout)
@@ -209,14 +208,15 @@ export const getAllOrdersController = async (req, res) => {
     try {
         // Fetching all orders and populating related fields (user and product)
         const orders = await OrderModel.find()
-            .populate('userId', 'name student_class roll_no') 
-            .populate('productId', 'name') 
+            .populate('userId', 'name student_class roll_no')
+            .populate('productId', 'name')
             .sort({ createdAt: -1 });
+
         // If no orders found, return a message
         if (orders.length === 0) {
             return res.status(404).json({
                 success: false,
-                message: 'No orders found'
+                message: 'No orders found',
             });
         }
 
@@ -234,16 +234,17 @@ export const getAllOrdersController = async (req, res) => {
                     username: username,
                     studentClass: studentClass, // Include student_class
                     rollNo: rollNo, // Include roll_no
-                    productName: productName
+                    productName: productName,
+                    size: order.size, // Include the size field
                 };
-            })
+            }),
         });
     } catch (error) {
         console.error('Error fetching orders:', error);
         return res.status(500).json({
             success: false,
             message: 'Error fetching orders',
-            error: error.message || error
+            error: error.message || error,
         });
     }
 };

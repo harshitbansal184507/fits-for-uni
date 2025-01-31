@@ -77,7 +77,7 @@ const ProductAdmin = () => {
   },[search])
   
   return (
-    <section className=''>
+    <section className='dark:bg-gray-700 dark:text-white'>
         <div className='p-2  bg-white shadow-md flex items-center justify-between gap-4 dark:bg-gray-700 dark:text-white'>
                 <h2 className='font-semibold'>Product</h2>
                 <div className='dark:bg-gray-700 dark:text-white h-full min-w-24 max-w-56 w-full ml-auto bg-blue-50 px-4 flex items-center gap-3 py-2 rounded  border focus-within:border-primary-200'>
