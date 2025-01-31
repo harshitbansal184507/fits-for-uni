@@ -94,7 +94,7 @@ export const updateCartItemQtyController = async (request, response) => {
       const { _id, qty, size } = request.body; // Add size to the destructured request body
   
       // Validate required fields
-      if (!_id || !qty || !size) {
+      if (!_id || !qty) {
         return response.status(400).json({
           message: "Provide _id, qty, and size",
           error: true,

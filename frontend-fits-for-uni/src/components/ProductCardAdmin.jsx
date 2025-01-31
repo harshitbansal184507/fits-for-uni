@@ -38,7 +38,7 @@ const ProductCardAdmin = ({ data, fetchProductData }) => {
     }
   }
   return (
-    <div className='w-36 p-4 bg-white rounded'>
+    <div className='w-36 p-4 bg-white rounded dark:bg-gray-700 dark:text-white'>
         <div>
             <img
                src={data?.image[0]}  
