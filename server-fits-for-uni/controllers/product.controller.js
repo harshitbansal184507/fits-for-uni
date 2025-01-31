@@ -1,58 +1,58 @@
 import ProductModel from "../models/product.model.js";
 
-export const createProductController = async(request,response)=>{
+
+export const createProductController = async (request, response) => {
     try {
-        const { 
-            name ,
-            image ,
+        const {
+            name,
+            image,
             category,
             subCategory,
-            unit,
-            stock,
+            sizes, // Updated to accept sizes array
             price,
             discount,
             description,
             more_details,
-        } = request.body 
+        } = request.body;
 
-        if(!name || !image[0] || !category[0] || !subCategory[0] || !unit ||  !description ){
+        // Validate required fields
+        if (!name || !image?.[0] || !category?.[0] || !sizes?.[0]?.size || !description) {
             return response.status(400).json({
-                message : "Enter required fields",
-                error : true,
-                success : false
-            })
+                message: "Enter required fields",
+                error: true,
+                success: false,
+            });
         }
 
+        // Create a new product
         const product = new ProductModel({
-            name ,
-            image ,
+            name,
+            image,
             category,
             subCategory,
-            unit,
-            stock,
+            sizes, // Use the sizes array
             price,
             discount,
             description,
             more_details,
-        })
-        const saveProduct = await product.save()
+        });
+
+        const saveProduct = await product.save();
 
         return response.json({
-            message : "Product Created Successfully",
-            data : saveProduct,
-            error : false,
-            success : true
-        })
-
+            message: "Product Created Successfully",
+            data: saveProduct,
+            error: false,
+            success: true,
+        });
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
-        })
+            message: error.message || error,
+            error: true,
+            success: false,
+        });
     }
-}
-
+};
 export const getProductController = async(request,response)=>{
     try {
         
@@ -127,58 +127,57 @@ export const getProductByCategory = async(request,response)=>{
     }
 }
 
-export const getProductByCategoryAndSubCategory = async (request, response) => {
+export const getProductByCategoryAndSubCategory  = async(request,response)=>{
     try {
-      let { categoryId, page = 1, limit = 10 } = request.body;
-  
-      // Validate categoryId
-      if (!categoryId) {
-        return response.status(400).json({
-          message: "Provide categoryId",
-          error: true,
-          success: false,
-        });
-      }
-  
-      // Ensure categoryId is an array (for $in query)
-      if (!Array.isArray(categoryId)) {
-        categoryId = [categoryId];
-      }
-  
-      // Build query
-      const query = {
-        category: { $in: categoryId }, // Matches categories in the provided array
-      };
-  
-      const skip = (page - 1) * limit;
-  
-      // Fetch data and count in parallel
-      const [data, dataCount] = await Promise.all([
-        ProductModel.find(query)
-          .sort({ createdAt: -1 }) // Sort by creation date, newest first
-          .skip(skip)
-          .limit(Number(limit)), // Ensure limit is a number
-        ProductModel.countDocuments(query),
-      ]);
-  
-      return response.json({
-        message: "Product list",
-        data: data,
-        totalCount: dataCount,
-        page: page,
-        limit: limit,
-        success: true,
-        error: false,
-      });
+        const { categoryId,subCategoryId,page,limit } = request.body
+
+        if(!categoryId || !subCategoryId){
+            return response.status(400).json({
+                message : "Provide categoryId and subCategoryId",
+                error : true,
+                success : false
+            })
+        }
+
+        if(!page){
+            page = 1
+        }
+
+        if(!limit){
+            limit = 10
+        }
+
+        const query = {
+            category : { $in :categoryId  },
+            subCategory : { $in : subCategoryId }
+        }
+
+        const skip = (page - 1) * limit
+
+        const [data,dataCount] = await Promise.all([
+            ProductModel.find(query).sort({createdAt : -1 }).skip(skip).limit(limit),
+            ProductModel.countDocuments(query)
+        ])
+
+        return response.json({
+            message : "Product list",
+            data : data,
+            totalCount : dataCount,
+            page : page,
+            limit : limit,
+            success : true,
+            error : false
+        })
+
     } catch (error) {
-      return response.status(500).json({
-        message: error.message || "An error occurred",
-        error: true,
-        success: false,
-      });
+        return response.status(500).json({
+            message : error.message || error,
+            error : true,
+            success : false
+        })
     }
-  };
-  
+}
+
 export const getProductDetails = async(request,response)=>{
     try {
         const { productId } = request.body 
@@ -203,38 +202,46 @@ export const getProductDetails = async(request,response)=>{
 }
 
 //update product
-export const updateProductDetails = async(request,response)=>{
+export const updateProductDetails = async (request, response) => {
     try {
-        const { _id } = request.body 
+        const { _id, sizes, ...otherFields } = request.body;
 
-        if(!_id){
+        // Validate product _id
+        if (!_id) {
             return response.status(400).json({
-                message : "provide product _id",
-                error : true,
-                success : false
-            })
+                message: "Provide product _id",
+                error: true,
+                success: false,
+            });
         }
 
-        const updateProduct = await ProductModel.updateOne({ _id : _id },{
-            ...request.body
-        })
+        // Validate sizes array (if provided)
+      
+        // Update the product
+        const updateProduct = await ProductModel.updateOne(
+            { _id: _id },
+            {
+                $set: {
+                    ...otherFields, // Update other fields
+                    ...(sizes && { sizes }), // Update sizes array if provided
+                },
+            }
+        );
 
         return response.json({
-            message : "updated successfully",
-            data : updateProduct,
-            error : false,
-            success : true
-        })
-
+            message: "Updated successfully",
+            data: updateProduct,
+            error: false,
+            success: true,
+        });
     } catch (error) {
         return response.status(500).json({
-            message : error.message || error,
-            error : true,
-            success : false
-        })
+            message: error.message || error,
+            error: true,
+            success: false,
+        });
     }
-}
-
+};
 //delete product
 export const deleteProductDetails = async(request,response)=>{
     try {
@@ -277,8 +284,11 @@ export const searchProduct = async(request,response)=>{
             limit  = 10
         }
 
-        const query = search ? { name: { $regex: search, $options: "i" } } : {};
-
+        const query = search ? {
+            $text : {
+                $search : search
+            }
+        } : {}
 
         const skip = ( page - 1) * limit
 
