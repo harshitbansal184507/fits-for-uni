@@ -61,7 +61,6 @@ const DisplayCartItem = ({close}) => {
                                                         </div>
                                                         <div className='w-full max-w-sm text-xs'>
                                                             <p className='text-xs text-ellipsis line-clamp-2'>{item?.productId?.name}</p>
-                                                            <p className='text-neutral-400'>{item?.productId?.unit}</p>
                                                         </div>
                                                         <div>
                                                             <AddToCartButton data={item?.productId}/>

@@ -21,8 +21,6 @@ const CartMobileLink = () => {
                             <FaCartShopping/>
                         </div>
                         <div className='text-xs'>
-                                <p>{totalQty} items</p>
-                                <p>{DisplayPriceInRupees(totalPrice)}</p>
                         </div>
                     </div>
 

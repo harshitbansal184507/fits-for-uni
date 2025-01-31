@@ -13,6 +13,11 @@ const cartProductSchema = new mongoose.Schema({
         type : mongoose.Schema.ObjectId,
         ref : "User"
     }
+    ,size: {
+        type: String,
+        enum: ["freesize", "S", "M", "L", "XL", "XXL", "XXXL"], // Add more sizes if needed
+        required: true
+    },
 },{
     timestamps : true
 })
