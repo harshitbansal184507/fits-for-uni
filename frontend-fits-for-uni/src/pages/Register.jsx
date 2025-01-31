@@ -11,6 +11,9 @@ const Register = () => {
     const [data, setData] = useState({
         name: "",
         email: "",
+        roll_no : "" ,
+        student_class : "",
+
         password: "",
         confirmPassword: "",
     });
@@ -53,6 +56,8 @@ const Register = () => {
                 setData({
                     name: "",
                     email: "",
+                    roll_no : "" ,
+                    student_class : "",
                     password: "",
                     confirmPassword: "",
                 });
@@ -105,6 +110,46 @@ const Register = () => {
                             placeholder='Enter your email'
                         />
                     </div>
+
+                    {/*class field*/}
+                    <div className='grid gap-1'>
+                        <label htmlFor='student_class' className='text-sm font-medium text-gray-700 dark:text-white'>
+                            Enter Class <br></br>
+                            (Course + Specialisation(if any) + Start Year + Section , Eg. B.Tech CSE 22A) :
+                        </label>
+                        <input
+                            type='text'
+                            id='student_class'
+                            autoFocus
+                            className='w-full px-4 py-3 rounded-lg bg-white/50 border border-gray-300 
+                                     focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-200 outline-none
+                                     dark:bg-gray-700/50 dark:border-gray-600 dark:text-white'
+                            name='student_class'
+                            value={data.student_class}
+                            onChange={handleChange}
+                            placeholder='Enter your Class'
+                        />
+                    </div>
+                       {/*rollno field*/}
+                       <div className='grid gap-1'>
+                        <label htmlFor='roll_no' className='text-sm font-medium text-gray-700 dark:text-white'>
+                            Enter Roll no. :
+
+                        </label>
+                        <input
+                            type='text'
+                            id='roll_no'
+                            autoFocus
+                            className='w-full px-4 py-3 rounded-lg bg-white/50 border border-gray-300 
+                                     focus:border-red-500 focus:ring-2 focus:ring-red-500/20 transition-all duration-200 outline-none
+                                     dark:bg-gray-700/50 dark:border-gray-600 dark:text-white'
+                            name='roll_no'
+                            value={data.roll_no}
+                            onChange={handleChange}
+                            placeholder='Enter your Roll number'
+                        />
+                    </div>
+
 
                     {/* Password Field */}
                     <div className='grid gap-1'>

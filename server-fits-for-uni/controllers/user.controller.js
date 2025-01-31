@@ -10,13 +10,13 @@ import jwt from 'jsonwebtoken'
 
 export async function registerUserController(request,response){
     try {
-        const { name, email , password } = request.body
+        const { name, email , password , student_class , roll_no } = request.body
 
-        console.log(name, email, password);
+        console.log(name, email, password,student_class ,roll_no);
 
-        if(!name || !email || !password){
+        if(!name || !email || !password || !student_class || !roll_no ){
             return response.status(400).json({
-                message : "provide email, name, password",
+                message : "provide email, name, password , student's class , roll number",
                 error : true,
                 success : false
             })
@@ -31,6 +31,16 @@ export async function registerUserController(request,response){
                 success : false
             })
         }
+        const rollnocheck = await UserModel.findOne({ roll_no })
+
+        if(rollnocheck){
+            return response.json({
+                message : "Already registered rollno",
+                error : true,
+                success : false
+            })
+        }
+        
 
         const salt = await bcryptjs.genSalt(10)
         const hashPassword = await bcryptjs.hash(password,salt)
@@ -38,6 +48,8 @@ export async function registerUserController(request,response){
         const payload = {
             name,
             email,
+            student_class,
+            roll_no,
             password : hashPassword,
             verify_email : true,
         }

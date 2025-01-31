@@ -38,21 +38,26 @@ const AllOrders = () => {
           <tr className="bg-gray-100 dark:bg-gray-700 dark:text-white">
             <th className="px-4 py-2">Order ID</th>
             <th className="px-4 py-2">Username</th>
+            <th className="px-4 py-2">Class</th>
+            <th className="px-4 py-2">Roll No.</th>
             <th className="px-4 py-2">Product Name</th>
           </tr>
         </thead>
         <tbody>
           {orders.length === 0 ? (
             <tr>
-              <td colSpan="3" className="px-4 py-2 text-center text-gray-500 dark:bg-gray-700 dark:text-white">No orders available.</td>
+              <td colSpan="5" className="px-4 py-2 text-center text-gray-500 dark:bg-gray-700 dark:text-white">
+                No orders available.
+              </td>
             </tr>
           ) : (
             orders.map((order) => (
               <tr key={order.orderId} className="border-t">
                 <td className="px-4 py-2">{order.orderId}</td>
-                <td className="px-4 py-2">{order.username || "Unknown User"}</td> 
-                <td className="px-4 py-2">{order.productName || "Unknown Product"}</td> 
-              
+                <td className="px-4 py-2">{order.username || "Unknown User"}</td>
+                <td className="px-4 py-2">{order.studentClass || "N/A"}</td> {/* Updated to studentClass */}
+                <td className="px-4 py-2">{order.rollNo || "N/A"}</td> {/* Updated to rollNo */}
+                <td className="px-4 py-2">{order.productName || "Unknown Product"}</td>
               </tr>
             ))
           )}
