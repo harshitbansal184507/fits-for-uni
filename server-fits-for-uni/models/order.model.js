@@ -14,13 +14,7 @@ const orderSchema = new mongoose.Schema({
         type : mongoose.Schema.ObjectId,
         ref : "product"
     },
-    size :{
-        type : [String] , 
-        enum : ["XS","S","M","L","XL","XXL","XXXL","XXXXL","XXXXXL","FREE SIZE"], 
-        default : "FREE SIZE", 
-        required : [true, "Provide Size"],
-        ref : "size", 
-    },
+   
     product_details : {
         name : String,
         image : Array,

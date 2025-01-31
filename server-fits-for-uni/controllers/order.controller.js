@@ -209,10 +209,9 @@ export const getAllOrdersController = async (req, res) => {
     try {
         // Fetching all orders and populating related fields (user and product)
         const orders = await OrderModel.find()
-            .populate('userId', 'name') // Populate only the 'name' field from UserModel
-            .populate('productId', 'name') // Populate only the 'name' field from ProductModel
-            .sort({ createdAt: -1 }); // Sort orders by most recent
-
+            .populate('userId', 'name student_class roll_no') 
+            .populate('productId', 'name') 
+            .sort({ createdAt: -1 });
         // If no orders found, return a message
         if (orders.length === 0) {
             return res.status(404).json({
@@ -226,11 +225,15 @@ export const getAllOrdersController = async (req, res) => {
             success: true,
             orders: orders.map(order => {
                 const username = order.userId ? order.userId.name : 'Unknown User';
+                const studentClass = order.userId ? order.userId.student_class : 'N/A';
+                const rollNo = order.userId ? order.userId.roll_no : 'N/A';
                 const productName = order.productId ? order.productId.name : 'Unknown Product';
 
                 return {
                     orderId: order.orderId,
                     username: username,
+                    studentClass: studentClass, // Include student_class
+                    rollNo: rollNo, // Include roll_no
                     productName: productName
                 };
             })

@@ -5,6 +5,8 @@ const initialValue = {
     name : "",
     email : "",
     avatar : "",
+    student_class:"" ,
+    roll_no :"",
     mobile : "",
     verify_email : "",
     last_login_date : "",
@@ -23,6 +25,8 @@ const userSlice  = createSlice({
             state._id = action.payload?._id
             state.name  = action.payload?.name
             state.email = action.payload?.email
+            state.student_class = action.payload?.student_class
+            state.roll_no = action.payload?.roll_no
             state.avatar = action.payload?.avatar
             state.mobile = action.payload?.mobile
             state.verify_email = action.payload?.verify_email
@@ -40,6 +44,8 @@ const userSlice  = createSlice({
             state._id = ""
             state.name  = ""
             state.email = ""
+            state.student_class = ""
+            state.roll_no = ""
             state.avatar = ""
             state.mobile = ""
             state.verify_email = ""

@@ -6,7 +6,6 @@ import AxiosToastError from '../utils/AxiosToastError'
 import CardProduct from '../components/CardProduct'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useLocation } from 'react-router-dom'
-import noDataImage from '../assets/nothing here yet.webp'
 
 const SearchPage = () => {
   const [data,setData] = useState([])
@@ -98,11 +97,8 @@ const SearchPage = () => {
                 //no data 
                 !data[0] && !loading && (
                   <div className='flex flex-col justify-center items-center w-full mx-auto'>
-                    <img
-                      src={noDataImage} 
-                      className='w-full h-full max-w-xs max-h-xs block'
-                    />
-                    <p className='font-semibold my-2'>No Data found</p>
+                 
+                    <p className='font-semibold my-2'>search not matched</p>
                   </div>
                 )
               }
