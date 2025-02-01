@@ -135,6 +135,9 @@ const ProductDisplayPage = () => {
       {/* Product Details Section */}
       <div className='p-4 lg:pl-7 text-base lg:text-lg'>
         <h2 className='text-lg font-semibold lg:text-3xl'>{data.name}</h2>
+        <h2 className='text-base lg:text-lg text-gray-700
+'>{data.description}</h2>
+
         <Divider />
 
         {/* Size Selection Dropdown */}
